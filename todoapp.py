@@ -1,8 +1,9 @@
-from flask import render_template, flask, request, redirect
+from flask import render_template, Flask, request, redirect
 import re
 
 
 app = Flask(__name__)
+to_do =[]
 
 class Task():
     def __init__(self, task, email, priority):
@@ -12,13 +13,10 @@ class Task():
 
 @app.route('/')
 def display_list():
-    task = task.task
-    email = task.email
-    priority task.priority
 
-    return render_template('index.html', to_do = to_do)
+    return render_template('index.html', to_do=to_do)
 
-@app.route('/submit', methods = ['POST'])
+@app.route('/submit', methods=['POST'])
 def submit():
     global message
     global to_do
@@ -52,12 +50,12 @@ def submit():
     return redirect("/")
 
 
-@app.route('/clear', methods = ['POST'])
+@app.route('/clear', methods=['POST'])
 def clear():
-    global todo_list
+    global to_do
     global message
 
-    todo_list = []
+    to_do = []
     message = ''
 
     return redirect("/")
