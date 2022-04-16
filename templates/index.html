@@ -17,20 +17,14 @@
         <th>Action:</th>
       </tr>
 
-        #{% for task in todo_list %}
-      <tr>
-        <td>{{ task.task }}</td>
-        <td>{{ task.email }}</td>
-        <td>{{ task.priority }}</td>
-        <td>
-          <form action="/delete" method="POST">
-            <button type="submit">Delete</button>
-            <input type="hidden" name="index" value="{{ loop.index0 }}">
-          </form>
-        </td>
-      </tr>
-      {% endfor %}
-      <br><br>
+
+      {% for task in todo_list %}
+    <tr>
+        <td> {{ task[0] }}</td>
+        <td> {{ task[1] }}</td>
+        <td>{{ task[2] }}</td>
+    </tr>
+    {% endfor %}
 
     </table>
 
@@ -40,7 +34,7 @@
   <p>
     <b>Create a New Task:</b>
   </p>
-  <form action="/submit" method="POST">
+  <form action="/submit" method="POST" id="submit">
     <input type="text" name="task" placeholder="Task"></input>
     <input type="text" name="email" placeholder="Email"></input>
     <select name="priority">
@@ -51,7 +45,7 @@
     </select>
     <br>
     <br>
-    <button type="submit">Add To Do Item</button>
+    <button type="submit">Add To List</button>
   </form>
   <p>
     <b>Clear All Tasks:</b>

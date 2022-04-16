@@ -1,4 +1,4 @@
-from Flask import render_template, Flask, request
+from flask import render_template, flask, request, redirect
 import re
 
 
@@ -11,9 +11,12 @@ class Task():
         self.priority = priority
 
 @app.route('/')
-def index():
+def display_list():
+    task = task.task
+    email = task.email
+    priority task.priority
 
-    return render_template('index.html', to_do= to_do)
+    return render_template('index.html', to_do = to_do)
 
 @app.route('/submit', methods = ['POST'])
 def submit():
