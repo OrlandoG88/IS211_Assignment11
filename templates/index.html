@@ -19,9 +19,9 @@
 
     {% for task in to_do %}
       <tr>
-        <td>{{ task }}</td>
-        <td>{{ email }}</td>
-        <td>{{ priority }}</td>
+        <td>{{ task.task }}</td>
+        <td>{{ task.email }}</td>
+        <td>{{ task.priority }}</td>
         <td>
           <form action="/delete" method="POST">
             <button type="submit">Delete</button>
