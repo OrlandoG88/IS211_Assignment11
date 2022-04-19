@@ -1,4 +1,4 @@
-from flask import render_template, Flask, request, redirect
+from flask import render_template,flask, request, redirect, url_for
 import re
 
 
@@ -26,28 +26,28 @@ def submit():
 
     if task == '':
         message = 'Unable to Add Task - Task Field is Blank'
-        return redirect("/")
+        return redirect(url_for("display_list"))
 
     email_reg = r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)'
 
     if email == '':
         message = 'Unable to Add Task - Email Field is Blank'
-        return redirect("/")
+        return redirect(url_for("display_list"))
 
     elif not re.search(email_reg, email):
         message = 'Unable to Add Task - Email Format is Not Valid'
-        return redirect("/")
+        return redirect(url_for("display_list"))
 
     if priority == 'Blank':
         message = 'Unable to Add Task - Priority Was Not Set'
-        return redirect("/")
+        return redirect(url_for("display_list"))
 
     new_task = Task(task, email, priority)
 
     to_do.append(new_task)
     message = ''
 
-    return redirect("/")
+    return redirect(url_for("display_list"))
 
 
 @app.route('/clear', methods=['POST'])
