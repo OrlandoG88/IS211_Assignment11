@@ -58,7 +58,17 @@ def clear():
     to_do = []
     message = ''
 
-    return redirect("/")
+    return redirect(url_for("display_list"))
+
+@app.route('/delete', methods=['POST'])
+def delete():
+    global to_do
+
+    index = int(request.form['index'])
+
+    del to_do[index]
+
+    return redirect(url_for('display_list'))
 
 
 
